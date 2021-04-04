@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>仿微信聊天室</title>
+  <!--the css for jquery.mCustomScrollbar-->
+  <!-- 引入jquery-emoj依赖的滚动条插件的样式 -->
+  <link rel="stylesheet" href="lib/jquery-mCustomScrollbar/css/jquery.mCustomScrollbar.min.css"/>
+  <!--the css for this plugin-->
+  <!-- 引入jquery-emoj的样式 -->
+  <link rel="stylesheet" href="lib/jquery-emoji/css/jquery.emoji.css"/>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body class="bg-blur">
+  <!-- 登录盒子 -->
+  <div class="login_box">
+    <div class="title">用户登录</div>
+    <p>用户名</p>
+    <input type="text" placeholder="请输入用户名" id="username">
+    <p>选择头像</p>
+    <ul class="avatar" id="login_avatar">
+      <li class="now"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201810%2F30%2F20181030102731_oxjiy.thumb.700_0.jpg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620052117&t=c09d97006b0c59e279b5842666886cf0" alt=""  ondragstart="return false"></li>
+      <li><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202003%2F06%2F20200306152309_rvbpg.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620051801&t=3cb3dcd28583128d1f1e96d0a8454f13" alt="" ondragstart="return false"></li>
+      <li><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202002%2F01%2F20200201112954_jlyeq.thumb.400_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620051801&t=80b0ba43b11dcb5bc196dda1ac4c5351" alt=""  ondragstart="return false"></li>
+      <li><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F202004%2F16%2F20200416072724_lsjgb.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620051801&t=b438e7ed453a5a3960f7f5f32cb42da2" alt=""  ondragstart="return false"></li>
+      <li><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201901%2F17%2F20190117141204_bkrej.thumb.400_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620051744&t=afdae55576ba73016bf93cfcbc19b294g" alt=""  ondragstart="return false"></li>
+      <li><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201901%2F17%2F20190117141204_bkrej.thumb.400_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620051744&t=afdae55576ba73016bf93cfcbc19b294" alt=""  ondragstart="return false"></li>
+      <li><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201809%2F06%2F20180906112946_RXAAT.thumb.700_0.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620051744&t=f54949e050c7e448663cf2d9eb774d70" alt=""  ondragstart="return false"></li>
+      <li><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201809%2F17%2F20180917171318_taPHF.thumb.400_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620051744&t=eed536485ab4a269da778eecfc02f0d0" alt=""  ondragstart="return false"></li>
+      <li><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201711%2F23%2F20171123232332_BCuVS.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620051744&t=f0c1eae8ab81314362c747c24f510649" alt=""  ondragstart="return false"></li>
+      <li><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201906%2F23%2F20190623203321_ijUi8.thumb.700_0.jpeg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620051744&t=6a298f69aa8aac6235bacde986e210b6" alt=""  ondragstart="return false"></li>
+    </ul>
+    <button class="weui-btn" id="loginBtn">登录</button>
+  </div>
+  <!-- 聊天盒子 -->
+  <div class="container  invisible">
+    <!-- 左侧用户列表 -->
+    <div class="user-list">
+      <div class="header">
+        <div class="avatar">
+          <img src="images/avatar02.jpg" alt="" class="img avatar_url">
+        </div>
+        <div class="info">
+          <h3 class="username"></h3>
+        </div>
+      </div>
+      <div class="title">
+        <h3>用户列表</h3>
+      </div>
+      <ul>
+        <!-- <li class="user">
+          <div class="avatar"><img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201807%2F16%2F20180716213821_TCxnk.thumb.1000_0.gif&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620052117&t=eae5d0d27568d94deb294ea2e9a977c5" alt=""></div>
+          <div class="name">群聊</div>
+        </li> -->
+      </ul>
+    </div>
+    <!-- 聊天主窗口 -->
+    <div class="box">
+      <div class="box-hd">
+        <!-- <div id="chatName"></div> -->
+        <!-- <h3>群聊(<span id="userCount">99</span>)</h3> -->
+        <h3 id="chatName">群聊(<span id="userCount"></span>)</h3>
+      </div>
+      <div class="box-bd">
+        <!-- <div class="system">
+          <p class="message_system">
+            <span class="content">往事随风 加入群聊</span>
+          </p>
+        </div>
+        <div class="message-box">
+          <div class="my message">
+            <img src="images/avatar02.jpg" alt="" class="avatar">
+            <div class="content">
+              <div class="bubble">
+                <div class="bubble_cont">在干嘛</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="message-box">
+          <div class="other message">
+            <img src="images/avatar02.jpg" alt="" class="avatar">
+            <div class="nickname">小美士大夫撒旦发送到发发呆撒旦</div>
+            <div class="content">
+              <div class="bubble">
+                <div class="bubble_cont">在干嘛</div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+      <!-- 聊天窗口底部 -->
+      <div class="box-ft">
+        <!-- 工具栏 -->
+        <div class="toolbar">
+          <a class="face" href="javascript:;" title="表情"></a>
+          <!-- <a class="screen-cut" href="javascript:;" title="暂不支持截屏"></a> -->
+          <a href="javascript:;" title="图片" class="file">
+            <label for="file"></label><input type="file" id="file" style="display:none;"> 
+          </a>
+        </div>
+        <!-- 内容输入区 -->
+        <div class="content">
+          <!-- div添加contenteditable即可编辑 -->
+          <div name="" id="content" class="text" contenteditable></div>
+        </div>
+        <!-- 发送按钮 -->
+        <div class="action">
+          <span class="desc">按下Ctrl+Enter发送</span>
+          <a class="btn-send" id="btn-send" href="javascript:;">发送</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/jquery.js"></script>
+  <!-- jquery的表情插件 依赖的jquery滚动条插件 -->
+  <script src="lib/jquery-mCustomScrollbar/script/jquery.mCustomScrollbar.min.js"></script>
+  <!-- jquery的表情插件 让文本框或div具有插入表情的功能 -->
+  <script src="lib/jquery-emoji/js/jquery.emoji.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
